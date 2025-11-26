@@ -6,14 +6,14 @@
 
 volatile sig_atomic_t ping_count = 0;
 volatile sig_atomic_t pong_count = 0;
-volatile sig_atomic_t max_pairs = ;  // nombre de ping/pong, valeur par défaut
+volatile sig_atomic_t max_pairs = 4;  // nombre de ping/pong, valeur par défaut
 
 pid_t pid_ping = 0;  // PID du processus ping (père)
 pid_t pid_pong = 0;  // PID du processus pong (fils)
 
 /* Handler pour le processus PING (père) */
 void handler_ping(int sig) {
-    (void)sig;  // éviter un warning "paramètre inutilisé" du compilateur
+    (void)sig;  // éviter un warning "paramètre inutilisé"
 
     ping_count++;
     printf("ping%u ", (unsigned int)ping_count);
@@ -104,3 +104,4 @@ int main(int argc, char *argv[]) {
 
     return 0;
 }
+
